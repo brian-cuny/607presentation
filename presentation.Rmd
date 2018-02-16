@@ -1,0 +1,125 @@
+---
+title: "R Style Guide"
+author: "Brian"
+date: "February 16, 2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+<link rel="stylesheet" href="./custom.css">
+<style>
+  pre, ul{
+    margin-bottom: 0px;
+  }
+</style>
+
+## IMPORTANT LINKS
+
+* Google Slides: https://docs.google.com/presentation/d/1if-8xGYYNNiqQYbSybmPTtwf_fDotc1YSAv7Q2DUVcQ/edit?usp=sharing
+* Complete Google R Style Guide: https://google.github.io/styleguide/Rguide.xml
+
+## 1. Variable names should be short but descriptive and use a '.' between words
+
+<div class='alert alert-success'>
+<pre>
+  raw.data <- csv('...')
+  player.names <- c('Jill', 'Lisa', 'Bob')
+</pre>
+</div>
+
+<div class='alert alert-danger'>
+<pre>
+  info <- csv('...')
+  important_data <- c('Jill', 'Lisa', 'Bob')
+</pre>
+</div>
+
+## 2. Function names should be short but descriptive. Every word should begin with a capital.
+
+<div class='alert alert-success'>
+<pre>
+  AvgCount <- function(){
+    ...
+  }
+</pre>
+</div>
+
+<div class='alert alert-danger'>
+<pre>
+  avg.count <- function(){
+    ...
+  }
+  
+  calculate <- function(){
+    ...
+  }
+</pre>
+</div>
+
+## 3. No line should be more than 80 characters.
+
+<div class='alert alert-success'>
+<pre>
+ggplot(birthData, aes(x = births)) + 
+  geom_histogram(aes(y = ..density.., fill = ..count..), bins = 25) + 
+  scale_fill_gradient('Count', low = '#DCDCDC', high = '#7C7C7C') + 
+  stat_function(fun         = dnorm, color='red', 
+                args        = list(mean = mean(birthData$births), 
+                                     sd = sd(birthData$births)), 
+                show.legend = FALSE,
+                aes(size = 2)) + 
+  theme(legend.position = 'none') +
+  scale_y_continuous('Proportion', labels = scales::comma) + 
+  scale_x_continuous('Births',     labels = scales::comma) + 
+  labs(title   = 'Frequency of Births in Single Day (1969-1988)', 
+       caption = 'Data From: http://vincentarelbundock.github.io/Rdatasets/') 
+</pre>
+</div>
+
+<div class='alert alert-danger'>
+<pre>
+  ggplot(birthData, aes(x=births)) + geom_histogram(aes(y=..density.., fill=..count..), bins=25) + scale_fill_gradient('Count', low='#DCDCDC', high='#7C7C7C') + 
+   stat_function(fun=dnorm, color='red', args=list(mean=mean(birthData$births), sd=sd(birthData$births)), aes(size=2), show.legend=FALSE) +           
+   theme(legend.position='none') +
+   scale_y_continuous('Proportion', labels=scales::comma) + scale_x_continuous('Births', labels=scales::comma) + 
+   labs(title='Frequency of Births in Single Day (1969-1988)', caption='Data From: http://vincentarelbundock.github.io/Rdatasets/') 
+</pre>
+</div>
+
+## 4. Place a space before and after all operations.
+
+<div class='alert alert-success'>
+<pre>
+  average.score <- mean(players.info[, 2])
+  total.goals <- sum(players.info[3, ])
+</pre>
+</div>
+
+## 5. { should be on the same lin as conditionals
+
+<div class='alert alert-success'>
+<pre>
+  if(condition){
+    ...
+    ...
+  }else{
+    ...
+    ...
+  }
+</pre>
+</div>
+
+## 6. The Golden Rule
+
+<div class='alert alert-success'>
+<pre>
+<ul>
+<li>Always adapt to the style of the program you are writing, even if it contradicts these rules.</li>
+<li>Exception: If the code you are adapting will become your own, modify it to meet your style</li>
+<li>Exception: There are always exceptions.</li>
+<li>Above all else, be consistent</li>
+</ul>
+</pre>
+</div>
